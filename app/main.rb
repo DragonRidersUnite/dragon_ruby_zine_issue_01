@@ -1,4 +1,4 @@
-IMG_PREFIX = "sprites/DragonRuby Zine Issue 1 - v1.0-"
+IMG_PREFIX = "sprites/DragonRuby Zine Issue 1 - v1.1-"
 TOTAL_PAGES = 48
 
 def sprite_for_page(number)

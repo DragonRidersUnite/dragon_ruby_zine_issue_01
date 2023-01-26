@@ -3,7 +3,7 @@ devid=dragonridersunite
 devtitle=Dragon Riders
 gameid=dragonruby-zine-issue-1
 gametitle=DragonRuby Zine Issue 01
-version=1.0
+version=1.1
 icon=metadata/icon.png
 
 # === Flags available at all licensing tiers ===
