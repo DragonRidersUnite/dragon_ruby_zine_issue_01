@@ -1,4 +1,4 @@
-IMG_PREFIX = "sprites/DragonRuby Zine Issue 1 - v1.1-"
+IMG_PREFIX = "sprites/DragonRuby Zine Issue 1 - v1.3-"
 TOTAL_PAGES = 48
 
 def sprite_for_page(number)
@@ -49,10 +49,19 @@ def tick args
   args.outputs.labels  << {
     x: args.grid.w / 2,
     y: 42.from_bottom,
-    text: 'Preview the zine! | Navigate with arrow keys/WASD',
-    size_enum: 4,
+    text: 'Preview the zine! | Navigate with arrow keys or click on right side to go forward, left to go back',
+    size_enum: 2,
     alignment_enum: 1
   }
+
+  if args.inputs.mouse.click
+    if args.inputs.mouse.x < args.grid.w / 2
+      args.state.current_page -= 2
+    end
+    if args.inputs.mouse.x >= args.grid.w / 2
+      args.state.current_page += 2
+    end
+  end
 
   args.state.key_delay ||= 0
   if args.inputs.right || args.inputs.left
@@ -63,18 +72,18 @@ def tick args
         args.state.current_page -= 2
       end
       args.state.key_delay = 10
-
-      if args.state.current_page > TOTAL_PAGES
-        args.state.current_page = TOTAL_PAGES
-      end
-
-      if args.state.current_page < 1
-        args.state.current_page = 1
-      end
     else
       args.state.key_key -= 1
     end
   else
     args.state.key_delay = 0
+  end
+
+  if args.state.current_page > TOTAL_PAGES
+    args.state.current_page = TOTAL_PAGES
+  end
+
+  if args.state.current_page < 1
+    args.state.current_page = 1
   end
 end
